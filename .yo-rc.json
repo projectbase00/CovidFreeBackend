@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.app.covidfree",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.4",
+    "applicationType": "monolith",
+    "baseName": "CovidFreeBackend",
+    "packageName": "com.app.covidfree",
+    "packageFolder": "com/app/covidfree",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "Yzg3MTkwNGQyZjVmYzdiNWZlODhiZGI1NmMyMjE3MTlmMWI5YTIxYjFhZWU0MDRiZTZhNjQwYmY4OGRmMjU5MWQwNWNmNDUxYjk5NWFlMjk2NjRlZjI1MDk1NDkxZjIyYjQ3MjIzZTA0NDE3MWQzZjdmM2E2YzZmNGI5ZGFlZDI=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "react",
+    "clientTheme": "simplex",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1603908201491,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en"],
+    "blueprints": []
+  }
+}
