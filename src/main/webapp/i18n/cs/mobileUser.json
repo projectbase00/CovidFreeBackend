@@ -1,0 +1,29 @@
+{
+  "covidFreeBackendApp": {
+    "mobileUser": {
+      "home": {
+        "title": "Mobile Users",
+        "createLabel": "Vytvořit Mobile User",
+        "createOrEditLabel": "Vytvořit nebo upravit Mobile User",
+        "notFound": "No Mobile Users found"
+      },
+      "created": "Byl vytvořen potomek entity Mobile User s identifikátorem {{ param }}",
+      "updated": "Potomek entity Mobile User s identifikátorem {{ param }} byl upravený.",
+      "deleted": "Potomek entity Mobile User s identifikátorem {{ param }} bol smazaný.",
+      "delete": {
+        "question": "Jste si jisti, že chcete smazat Mobile User {{ id }}?"
+      },
+      "detail": {
+        "title": "Mobile User"
+      },
+      "rodneCislo": "Rodne Cislo",
+      "phoneNumber": "Phone Number",
+      "idcardImage": "Idcard Image",
+      "valid": "Valid",
+      "status": "Status",
+      "createDate": "Create Date",
+      "updateDate": "Update Date",
+      "eventLogging": "Event Logging"
+    }
+  }
+}

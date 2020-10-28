@@ -1,0 +1,26 @@
+
+entity MobileUser {
+	rodneCislo Integer
+    phoneNumber String
+    idcardImage ImageBlob
+    valid Boolean
+    status Boolean
+    createDate ZonedDateTime
+    updateDate ZonedDateTime  
+}
+
+entity EventLogging {
+	rodneCislo Integer
+    logType Integer
+    message String
+    createDate ZonedDateTime
+}
+
+
+relationship OneToMany {
+	MobileUser to EventLogging{logsByUser}
+}
+
+relationship OneToOne {
+	EventLogging{logs} to MobileUser
+}

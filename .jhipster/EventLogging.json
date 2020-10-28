@@ -1,0 +1,49 @@
+{
+  "name": "EventLogging",
+  "fields": [
+    {
+      "fieldName": "rodneCislo",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "logType",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "message",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "mobileUser",
+      "otherEntityRelationshipName": "eventLogging",
+      "relationshipName": "logs",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "mobileUser",
+      "otherEntityRelationshipName": "eventLogging",
+      "relationshipName": "logsByUser",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201028221532",
+  "entityTableName": "event_logging",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

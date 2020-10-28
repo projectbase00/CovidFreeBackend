@@ -1,0 +1,27 @@
+{
+  "covidFreeBackendApp": {
+    "eventLogging": {
+      "home": {
+        "title": "Event Loggings",
+        "createLabel": "Vytvořit Event Logging",
+        "createOrEditLabel": "Vytvořit nebo upravit Event Logging",
+        "notFound": "No Event Loggings found"
+      },
+      "created": "Byl vytvořen potomek entity Event Logging s identifikátorem {{ param }}",
+      "updated": "Potomek entity Event Logging s identifikátorem {{ param }} byl upravený.",
+      "deleted": "Potomek entity Event Logging s identifikátorem {{ param }} bol smazaný.",
+      "delete": {
+        "question": "Jste si jisti, že chcete smazat Event Logging {{ id }}?"
+      },
+      "detail": {
+        "title": "Event Logging"
+      },
+      "rodneCislo": "Rodne Cislo",
+      "logType": "Log Type",
+      "message": "Message",
+      "createDate": "Create Date",
+      "logs": "Logs",
+      "logsByUser": "Logs By User"
+    }
+  }
+}

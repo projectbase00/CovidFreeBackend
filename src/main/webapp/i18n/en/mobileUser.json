@@ -1,0 +1,29 @@
+{
+  "covidFreeBackendApp": {
+    "mobileUser": {
+      "home": {
+        "title": "Mobile Users",
+        "createLabel": "Create a new Mobile User",
+        "createOrEditLabel": "Create or edit a Mobile User",
+        "notFound": "No Mobile Users found"
+      },
+      "created": "A new Mobile User is created with identifier {{ param }}",
+      "updated": "A Mobile User is updated with identifier {{ param }}",
+      "deleted": "A Mobile User is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mobile User {{ id }}?"
+      },
+      "detail": {
+        "title": "Mobile User"
+      },
+      "rodneCislo": "Rodne Cislo",
+      "phoneNumber": "Phone Number",
+      "idcardImage": "Idcard Image",
+      "valid": "Valid",
+      "status": "Status",
+      "createDate": "Create Date",
+      "updateDate": "Update Date",
+      "eventLogging": "Event Logging"
+    }
+  }
+}

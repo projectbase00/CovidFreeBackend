@@ -1,0 +1,27 @@
+{
+  "covidFreeBackendApp": {
+    "eventLogging": {
+      "home": {
+        "title": "Event Loggings",
+        "createLabel": "Create a new Event Logging",
+        "createOrEditLabel": "Create or edit a Event Logging",
+        "notFound": "No Event Loggings found"
+      },
+      "created": "A new Event Logging is created with identifier {{ param }}",
+      "updated": "A Event Logging is updated with identifier {{ param }}",
+      "deleted": "A Event Logging is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Event Logging {{ id }}?"
+      },
+      "detail": {
+        "title": "Event Logging"
+      },
+      "rodneCislo": "Rodne Cislo",
+      "logType": "Log Type",
+      "message": "Message",
+      "createDate": "Create Date",
+      "logs": "Logs",
+      "logsByUser": "Logs By User"
+    }
+  }
+}
