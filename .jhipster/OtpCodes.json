@@ -1,0 +1,41 @@
+{
+  "name": "OtpCodes",
+  "fields": [
+    {
+      "fieldName": "citizenId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "otpCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "updateDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "mobileUser",
+      "otherEntityRelationshipName": "otpCodes",
+      "relationshipName": "mobileUser",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201029223502",
+  "entityTableName": "otp_codes",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

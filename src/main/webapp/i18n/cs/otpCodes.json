@@ -1,0 +1,26 @@
+{
+  "covidFreeBackendApp": {
+    "otpCodes": {
+      "home": {
+        "title": "Otp Codes",
+        "createLabel": "Vytvořit Otp Codes",
+        "createOrEditLabel": "Vytvořit nebo upravit Otp Codes",
+        "notFound": "No Otp Codes found"
+      },
+      "created": "Byl vytvořen potomek entity Otp Codes s identifikátorem {{ param }}",
+      "updated": "Potomek entity Otp Codes s identifikátorem {{ param }} byl upravený.",
+      "deleted": "Potomek entity Otp Codes s identifikátorem {{ param }} bol smazaný.",
+      "delete": {
+        "question": "Jste si jisti, že chcete smazat Otp Codes {{ id }}?"
+      },
+      "detail": {
+        "title": "Otp Codes"
+      },
+      "citizenId": "Citizen Id",
+      "otpCode": "Otp Code",
+      "createDate": "Create Date",
+      "updateDate": "Update Date",
+      "mobileUser": "Mobile User"
+    }
+  }
+}

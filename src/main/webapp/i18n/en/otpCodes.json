@@ -1,0 +1,26 @@
+{
+  "covidFreeBackendApp": {
+    "otpCodes": {
+      "home": {
+        "title": "Otp Codes",
+        "createLabel": "Create a new Otp Codes",
+        "createOrEditLabel": "Create or edit a Otp Codes",
+        "notFound": "No Otp Codes found"
+      },
+      "created": "A new Otp Codes is created with identifier {{ param }}",
+      "updated": "A Otp Codes is updated with identifier {{ param }}",
+      "deleted": "A Otp Codes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Otp Codes {{ id }}?"
+      },
+      "detail": {
+        "title": "Otp Codes"
+      },
+      "citizenId": "Citizen Id",
+      "otpCode": "Otp Code",
+      "createDate": "Create Date",
+      "updateDate": "Update Date",
+      "mobileUser": "Mobile User"
+    }
+  }
+}
