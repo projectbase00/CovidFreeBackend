@@ -1,9 +1,7 @@
 package com.app.covidfree.domain;
 
-import javax.persistence.*;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -29,6 +27,9 @@ public class MobileUser implements Serializable {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "hash")
+    private String hash;
+
     @Lob
     @Column(name = "idcard_image")
     private byte[] idcardImage;
@@ -42,13 +43,15 @@ public class MobileUser implements Serializable {
     @Column(name = "status")
     private Boolean status;
 
-    @CreatedDate
-    @Column(name = "create_date", nullable = false)
+    @Column(name = "create_date")
     private ZonedDateTime createDate;
 
-    @LastModifiedDate
-    @Column(name = "update_date", nullable = false)
+    @Column(name = "update_date")
     private ZonedDateTime updateDate;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private OtpCodes otpCodes;
 
     @OneToMany(mappedBy = "logsByUser")
     private Set<EventLogging> eventLoggings = new HashSet<>();
@@ -86,6 +89,19 @@ public class MobileUser implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public MobileUser hash(String hash) {
+        this.hash = hash;
+        return this;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     public byte[] getIdcardImage() {
@@ -166,6 +182,19 @@ public class MobileUser implements Serializable {
         this.updateDate = updateDate;
     }
 
+    public OtpCodes getOtpCodes() {
+        return otpCodes;
+    }
+
+    public MobileUser otpCodes(OtpCodes otpCodes) {
+        this.otpCodes = otpCodes;
+        return this;
+    }
+
+    public void setOtpCodes(OtpCodes otpCodes) {
+        this.otpCodes = otpCodes;
+    }
+
     public Set<EventLogging> getEventLoggings() {
         return eventLoggings;
     }
@@ -215,6 +244,7 @@ public class MobileUser implements Serializable {
             "id=" + getId() +
             ", citizenId=" + getCitizenId() +
             ", phoneNumber='" + getPhoneNumber() + "'" +
+            ", hash='" + getHash() + "'" +
             ", idcardImage='" + getIdcardImage() + "'" +
             ", idcardImageContentType='" + getIdcardImageContentType() + "'" +
             ", valid='" + isValid() + "'" +

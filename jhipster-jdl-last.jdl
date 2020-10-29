@@ -2,11 +2,19 @@
 entity MobileUser {
 	citizenId Integer
     phoneNumber String
+    hash String
     idcardImage ImageBlob
     valid Boolean
     status Boolean
     createDate ZonedDateTime
     updateDate ZonedDateTime  
+}
+
+entity OtpCodes {
+	citizenId Integer
+    otpCode String 
+    createDate ZonedDateTime
+    updateDate ZonedDateTime      
 }
 
 entity EventLogging {
@@ -19,4 +27,8 @@ entity EventLogging {
 
 relationship OneToMany {
 	MobileUser to EventLogging{logsByUser}
+}
+
+relationship OneToOne {
+	MobileUser to OtpCodes
 }

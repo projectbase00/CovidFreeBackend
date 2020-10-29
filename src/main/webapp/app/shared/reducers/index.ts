@@ -20,6 +20,10 @@ import mobileUser, {
 import eventLogging, {
   EventLoggingState
 } from 'app/entities/event-logging/event-logging.reducer';
+// prettier-ignore
+import otpCodes, {
+  OtpCodesState
+} from 'app/entities/otp-codes/otp-codes.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -35,6 +39,7 @@ export interface IRootState {
   readonly settings: SettingsState;
   readonly mobileUser: MobileUserState;
   readonly eventLogging: EventLoggingState;
+  readonly otpCodes: OtpCodesState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -52,6 +57,7 @@ const rootReducer = combineReducers<IRootState>({
   settings,
   mobileUser,
   eventLogging,
+  otpCodes,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
 });

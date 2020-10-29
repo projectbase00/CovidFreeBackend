@@ -2,8 +2,6 @@ package com.app.covidfree.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import org.springframework.data.annotation.CreatedDate;
-
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -31,8 +29,7 @@ public class EventLogging implements Serializable {
     @Column(name = "message")
     private String message;
 
-    @CreatedDate
-    @Column(name = "create_date", nullable = false)
+    @Column(name = "create_date")
     private ZonedDateTime createDate;
 
     @ManyToOne

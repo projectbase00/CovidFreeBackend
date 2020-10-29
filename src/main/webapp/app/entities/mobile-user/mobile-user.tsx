@@ -43,6 +43,9 @@ export const MobileUser = (props: IMobileUserProps) => {
                   <Translate contentKey="covidFreeBackendApp.mobileUser.phoneNumber">Phone Number</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="covidFreeBackendApp.mobileUser.hash">Hash</Translate>
+                </th>
+                <th>
                   <Translate contentKey="covidFreeBackendApp.mobileUser.idcardImage">Idcard Image</Translate>
                 </th>
                 <th>
@@ -57,6 +60,9 @@ export const MobileUser = (props: IMobileUserProps) => {
                 <th>
                   <Translate contentKey="covidFreeBackendApp.mobileUser.updateDate">Update Date</Translate>
                 </th>
+                <th>
+                  <Translate contentKey="covidFreeBackendApp.mobileUser.otpCodes">Otp Codes</Translate>
+                </th>
                 <th />
               </tr>
             </thead>
@@ -70,6 +76,7 @@ export const MobileUser = (props: IMobileUserProps) => {
                   </td>
                   <td>{mobileUser.citizenId}</td>
                   <td>{mobileUser.phoneNumber}</td>
+                  <td>{mobileUser.hash}</td>
                   <td>
                     {mobileUser.idcardImage ? (
                       <div>
@@ -96,6 +103,7 @@ export const MobileUser = (props: IMobileUserProps) => {
                   <td>
                     {mobileUser.updateDate ? <TextFormat type="date" value={mobileUser.updateDate} format={APP_DATE_FORMAT} /> : null}
                   </td>
+                  <td>{mobileUser.otpCodes ? <Link to={`otp-codes/${mobileUser.otpCodes.id}`}>{mobileUser.otpCodes.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${mobileUser.id}`} color="info" size="sm">

@@ -22,6 +22,9 @@
             <column name="phone_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="hash" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="idcard_image" type="longblob">
                 <constraints nullable="true" />
             </column>
@@ -39,6 +42,9 @@
             </column>
             <column name="update_date" type="datetime">
                 <constraints nullable="true" />
+            </column>
+            <column name="otp_codes_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_mobile_user_otp_codes_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -67,6 +73,7 @@
             <column name="id" type="numeric"/>
             <column name="citizen_id" type="numeric"/>
             <column name="phone_number" type="string"/>
+            <column name="hash" type="string"/>
             <column name="idcard_image" type="blob"/>
             <column name="idcard_image_content_type" type="string"/>
             <column name="valid" type="boolean"/>

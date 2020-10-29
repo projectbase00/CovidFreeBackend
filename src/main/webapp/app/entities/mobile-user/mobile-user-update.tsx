@@ -7,6 +7,8 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, setFileData, o
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
+import { IOtpCodes } from 'app/shared/model/otp-codes.model';
+import { getEntities as getOtpCodes } from 'app/entities/otp-codes/otp-codes.reducer';
 import { getEntity, updateEntity, createEntity, setBlob, reset } from './mobile-user.reducer';
 import { IMobileUser } from 'app/shared/model/mobile-user.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -15,9 +17,10 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface IMobileUserUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const MobileUserUpdate = (props: IMobileUserUpdateProps) => {
+  const [otpCodesId, setOtpCodesId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { mobileUserEntity, loading, updating } = props;
+  const { mobileUserEntity, otpCodes, loading, updating } = props;
 
   const { idcardImage, idcardImageContentType } = mobileUserEntity;
 
@@ -31,6 +34,8 @@ export const MobileUserUpdate = (props: IMobileUserUpdateProps) => {
     } else {
       props.getEntity(props.match.params.id);
     }
+
+    props.getOtpCodes();
   }, []);
 
   const onBlobChange = (isAnImage, name) => event => {
@@ -99,6 +104,12 @@ export const MobileUserUpdate = (props: IMobileUserUpdateProps) => {
                   <Translate contentKey="covidFreeBackendApp.mobileUser.phoneNumber">Phone Number</Translate>
                 </Label>
                 <AvField id="mobile-user-phoneNumber" type="text" name="phoneNumber" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="hashLabel" for="mobile-user-hash">
+                  <Translate contentKey="covidFreeBackendApp.mobileUser.hash">Hash</Translate>
+                </Label>
+                <AvField id="mobile-user-hash" type="text" name="hash" />
               </AvGroup>
               <AvGroup>
                 <AvGroup>
@@ -170,6 +181,21 @@ export const MobileUserUpdate = (props: IMobileUserUpdateProps) => {
                   value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.mobileUserEntity.updateDate)}
                 />
               </AvGroup>
+              <AvGroup>
+                <Label for="mobile-user-otpCodes">
+                  <Translate contentKey="covidFreeBackendApp.mobileUser.otpCodes">Otp Codes</Translate>
+                </Label>
+                <AvInput id="mobile-user-otpCodes" type="select" className="form-control" name="otpCodes.id">
+                  <option value="" key="0" />
+                  {otpCodes
+                    ? otpCodes.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </AvInput>
+              </AvGroup>
               <Button tag={Link} id="cancel-save" to="/mobile-user" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
@@ -192,6 +218,7 @@ export const MobileUserUpdate = (props: IMobileUserUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
+  otpCodes: storeState.otpCodes.entities,
   mobileUserEntity: storeState.mobileUser.entity,
   loading: storeState.mobileUser.loading,
   updating: storeState.mobileUser.updating,
@@ -199,6 +226,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
+  getOtpCodes,
   getEntity,
   updateEntity,
   setBlob,

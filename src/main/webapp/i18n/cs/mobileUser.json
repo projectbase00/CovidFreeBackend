@@ -18,11 +18,13 @@
       },
       "citizenId": "Citizen Id",
       "phoneNumber": "Phone Number",
+      "hash": "Hash",
       "idcardImage": "Idcard Image",
       "valid": "Valid",
       "status": "Status",
       "createDate": "Create Date",
       "updateDate": "Update Date",
+      "otpCodes": "Otp Codes",
       "eventLogging": "Event Logging"
     }
   }

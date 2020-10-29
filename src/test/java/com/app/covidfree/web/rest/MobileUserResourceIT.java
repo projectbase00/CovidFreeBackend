@@ -41,6 +41,9 @@ public class MobileUserResourceIT {
     private static final String DEFAULT_PHONE_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_PHONE_NUMBER = "BBBBBBBBBB";
 
+    private static final String DEFAULT_HASH = "AAAAAAAAAA";
+    private static final String UPDATED_HASH = "BBBBBBBBBB";
+
     private static final byte[] DEFAULT_IDCARD_IMAGE = TestUtil.createByteArray(1, "0");
     private static final byte[] UPDATED_IDCARD_IMAGE = TestUtil.createByteArray(1, "1");
     private static final String DEFAULT_IDCARD_IMAGE_CONTENT_TYPE = "image/jpg";
@@ -79,6 +82,7 @@ public class MobileUserResourceIT {
         MobileUser mobileUser = new MobileUser()
             .citizenId(DEFAULT_CITIZEN_ID)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
+            .hash(DEFAULT_HASH)
             .idcardImage(DEFAULT_IDCARD_IMAGE)
             .idcardImageContentType(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE)
             .valid(DEFAULT_VALID)
@@ -97,6 +101,7 @@ public class MobileUserResourceIT {
         MobileUser mobileUser = new MobileUser()
             .citizenId(UPDATED_CITIZEN_ID)
             .phoneNumber(UPDATED_PHONE_NUMBER)
+            .hash(UPDATED_HASH)
             .idcardImage(UPDATED_IDCARD_IMAGE)
             .idcardImageContentType(UPDATED_IDCARD_IMAGE_CONTENT_TYPE)
             .valid(UPDATED_VALID)
@@ -127,6 +132,7 @@ public class MobileUserResourceIT {
         MobileUser testMobileUser = mobileUserList.get(mobileUserList.size() - 1);
         assertThat(testMobileUser.getCitizenId()).isEqualTo(DEFAULT_CITIZEN_ID);
         assertThat(testMobileUser.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
+        assertThat(testMobileUser.getHash()).isEqualTo(DEFAULT_HASH);
         assertThat(testMobileUser.getIdcardImage()).isEqualTo(DEFAULT_IDCARD_IMAGE);
         assertThat(testMobileUser.getIdcardImageContentType()).isEqualTo(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE);
         assertThat(testMobileUser.isValid()).isEqualTo(DEFAULT_VALID);
@@ -168,6 +174,7 @@ public class MobileUserResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(mobileUser.getId().intValue())))
             .andExpect(jsonPath("$.[*].citizenId").value(hasItem(DEFAULT_CITIZEN_ID)))
             .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER)))
+            .andExpect(jsonPath("$.[*].hash").value(hasItem(DEFAULT_HASH)))
             .andExpect(jsonPath("$.[*].idcardImageContentType").value(hasItem(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].idcardImage").value(hasItem(Base64Utils.encodeToString(DEFAULT_IDCARD_IMAGE))))
             .andExpect(jsonPath("$.[*].valid").value(hasItem(DEFAULT_VALID.booleanValue())))
@@ -189,6 +196,7 @@ public class MobileUserResourceIT {
             .andExpect(jsonPath("$.id").value(mobileUser.getId().intValue()))
             .andExpect(jsonPath("$.citizenId").value(DEFAULT_CITIZEN_ID))
             .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER))
+            .andExpect(jsonPath("$.hash").value(DEFAULT_HASH))
             .andExpect(jsonPath("$.idcardImageContentType").value(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE))
             .andExpect(jsonPath("$.idcardImage").value(Base64Utils.encodeToString(DEFAULT_IDCARD_IMAGE)))
             .andExpect(jsonPath("$.valid").value(DEFAULT_VALID.booleanValue()))
@@ -219,6 +227,7 @@ public class MobileUserResourceIT {
         updatedMobileUser
             .citizenId(UPDATED_CITIZEN_ID)
             .phoneNumber(UPDATED_PHONE_NUMBER)
+            .hash(UPDATED_HASH)
             .idcardImage(UPDATED_IDCARD_IMAGE)
             .idcardImageContentType(UPDATED_IDCARD_IMAGE_CONTENT_TYPE)
             .valid(UPDATED_VALID)
@@ -237,6 +246,7 @@ public class MobileUserResourceIT {
         MobileUser testMobileUser = mobileUserList.get(mobileUserList.size() - 1);
         assertThat(testMobileUser.getCitizenId()).isEqualTo(UPDATED_CITIZEN_ID);
         assertThat(testMobileUser.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
+        assertThat(testMobileUser.getHash()).isEqualTo(UPDATED_HASH);
         assertThat(testMobileUser.getIdcardImage()).isEqualTo(UPDATED_IDCARD_IMAGE);
         assertThat(testMobileUser.getIdcardImageContentType()).isEqualTo(UPDATED_IDCARD_IMAGE_CONTENT_TYPE);
         assertThat(testMobileUser.isValid()).isEqualTo(UPDATED_VALID);

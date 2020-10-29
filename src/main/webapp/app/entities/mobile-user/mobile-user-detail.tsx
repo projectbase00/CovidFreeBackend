@@ -38,6 +38,12 @@ export const MobileUserDetail = (props: IMobileUserDetailProps) => {
           </dt>
           <dd>{mobileUserEntity.phoneNumber}</dd>
           <dt>
+            <span id="hash">
+              <Translate contentKey="covidFreeBackendApp.mobileUser.hash">Hash</Translate>
+            </span>
+          </dt>
+          <dd>{mobileUserEntity.hash}</dd>
+          <dt>
             <span id="idcardImage">
               <Translate contentKey="covidFreeBackendApp.mobileUser.idcardImage">Idcard Image</Translate>
             </span>
@@ -87,6 +93,10 @@ export const MobileUserDetail = (props: IMobileUserDetailProps) => {
           <dd>
             {mobileUserEntity.updateDate ? <TextFormat value={mobileUserEntity.updateDate} type="date" format={APP_DATE_FORMAT} /> : null}
           </dd>
+          <dt>
+            <Translate contentKey="covidFreeBackendApp.mobileUser.otpCodes">Otp Codes</Translate>
+          </dt>
+          <dd>{mobileUserEntity.otpCodes ? mobileUserEntity.otpCodes.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/mobile-user" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

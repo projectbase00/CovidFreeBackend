@@ -10,6 +10,10 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "hash",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "idcardImage",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "image"
@@ -32,6 +36,14 @@
     }
   ],
   "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "otpCodes",
+      "otherEntityRelationshipName": "mobileUser",
+      "relationshipName": "otpCodes",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
     {
       "relationshipType": "one-to-many",
       "otherEntityName": "eventLogging",
