@@ -16,11 +16,10 @@
       "detail": {
         "title": "Event Logging"
       },
-      "rodneCislo": "Rodne Cislo",
+      "citizenId": "Citizen Id",
       "logType": "Log Type",
       "message": "Message",
       "createDate": "Create Date",
-      "logs": "Logs",
       "logsByUser": "Logs By User"
     }
   }

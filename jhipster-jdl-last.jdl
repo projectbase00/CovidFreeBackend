@@ -1,6 +1,6 @@
 
 entity MobileUser {
-	rodneCislo Integer
+	citizenId Integer
     phoneNumber String
     idcardImage ImageBlob
     valid Boolean
@@ -10,7 +10,7 @@ entity MobileUser {
 }
 
 entity EventLogging {
-	rodneCislo Integer
+	citizenId Integer
     logType Integer
     message String
     createDate ZonedDateTime
@@ -19,8 +19,4 @@ entity EventLogging {
 
 relationship OneToMany {
 	MobileUser to EventLogging{logsByUser}
-}
-
-relationship OneToOne {
-	EventLogging{logs} to MobileUser
 }

@@ -26,11 +26,11 @@ export const MobileUserDetail = (props: IMobileUserDetailProps) => {
         </h2>
         <dl className="jh-entity-details">
           <dt>
-            <span id="rodneCislo">
-              <Translate contentKey="covidFreeBackendApp.mobileUser.rodneCislo">Rodne Cislo</Translate>
+            <span id="citizenId">
+              <Translate contentKey="covidFreeBackendApp.mobileUser.citizenId">Citizen Id</Translate>
             </span>
           </dt>
-          <dd>{mobileUserEntity.rodneCislo}</dd>
+          <dd>{mobileUserEntity.citizenId}</dd>
           <dt>
             <span id="phoneNumber">
               <Translate contentKey="covidFreeBackendApp.mobileUser.phoneNumber">Phone Number</Translate>

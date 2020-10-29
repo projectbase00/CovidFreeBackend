@@ -17,7 +17,6 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface IEventLoggingUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const EventLoggingUpdate = (props: IEventLoggingUpdateProps) => {
-  const [logsId, setLogsId] = useState('0');
   const [logsByUserId, setLogsByUserId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
@@ -84,10 +83,10 @@ export const EventLoggingUpdate = (props: IEventLoggingUpdateProps) => {
                 </AvGroup>
               ) : null}
               <AvGroup>
-                <Label id="rodneCisloLabel" for="event-logging-rodneCislo">
-                  <Translate contentKey="covidFreeBackendApp.eventLogging.rodneCislo">Rodne Cislo</Translate>
+                <Label id="citizenIdLabel" for="event-logging-citizenId">
+                  <Translate contentKey="covidFreeBackendApp.eventLogging.citizenId">Citizen Id</Translate>
                 </Label>
-                <AvField id="event-logging-rodneCislo" type="string" className="form-control" name="rodneCislo" />
+                <AvField id="event-logging-citizenId" type="string" className="form-control" name="citizenId" />
               </AvGroup>
               <AvGroup>
                 <Label id="logTypeLabel" for="event-logging-logType">
@@ -113,21 +112,6 @@ export const EventLoggingUpdate = (props: IEventLoggingUpdateProps) => {
                   placeholder={'YYYY-MM-DD HH:mm'}
                   value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.eventLoggingEntity.createDate)}
                 />
-              </AvGroup>
-              <AvGroup>
-                <Label for="event-logging-logs">
-                  <Translate contentKey="covidFreeBackendApp.eventLogging.logs">Logs</Translate>
-                </Label>
-                <AvInput id="event-logging-logs" type="select" className="form-control" name="logs.id">
-                  <option value="" key="0" />
-                  {mobileUsers
-                    ? mobileUsers.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
               </AvGroup>
               <AvGroup>
                 <Label for="event-logging-logsByUser">

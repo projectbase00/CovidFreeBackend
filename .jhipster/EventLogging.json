@@ -2,7 +2,7 @@
   "name": "EventLogging",
   "fields": [
     {
-      "fieldName": "rodneCislo",
+      "fieldName": "citizenId",
       "fieldType": "Integer"
     },
     {
@@ -19,14 +19,6 @@
     }
   ],
   "relationships": [
-    {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "mobileUser",
-      "otherEntityRelationshipName": "eventLogging",
-      "relationshipName": "logs",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
     {
       "relationshipType": "many-to-one",
       "otherEntityName": "mobileUser",

@@ -26,11 +26,11 @@ export const EventLoggingDetail = (props: IEventLoggingDetailProps) => {
         </h2>
         <dl className="jh-entity-details">
           <dt>
-            <span id="rodneCislo">
-              <Translate contentKey="covidFreeBackendApp.eventLogging.rodneCislo">Rodne Cislo</Translate>
+            <span id="citizenId">
+              <Translate contentKey="covidFreeBackendApp.eventLogging.citizenId">Citizen Id</Translate>
             </span>
           </dt>
-          <dd>{eventLoggingEntity.rodneCislo}</dd>
+          <dd>{eventLoggingEntity.citizenId}</dd>
           <dt>
             <span id="logType">
               <Translate contentKey="covidFreeBackendApp.eventLogging.logType">Log Type</Translate>
@@ -53,10 +53,6 @@ export const EventLoggingDetail = (props: IEventLoggingDetailProps) => {
               <TextFormat value={eventLoggingEntity.createDate} type="date" format={APP_DATE_FORMAT} />
             ) : null}
           </dd>
-          <dt>
-            <Translate contentKey="covidFreeBackendApp.eventLogging.logs">Logs</Translate>
-          </dt>
-          <dd>{eventLoggingEntity.logs ? eventLoggingEntity.logs.id : ''}</dd>
           <dt>
             <Translate contentKey="covidFreeBackendApp.eventLogging.logsByUser">Logs By User</Translate>
           </dt>

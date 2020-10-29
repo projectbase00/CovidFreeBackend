@@ -2,7 +2,7 @@
   "name": "MobileUser",
   "fields": [
     {
-      "fieldName": "rodneCislo",
+      "fieldName": "citizenId",
       "fieldType": "Integer"
     },
     {

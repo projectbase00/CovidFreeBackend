@@ -2,6 +2,8 @@ package com.app.covidfree.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -20,8 +22,8 @@ public class EventLogging implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "rodne_cislo")
-    private Integer rodneCislo;
+    @Column(name = "citizen_id")
+    private Integer citizenId;
 
     @Column(name = "log_type")
     private Integer logType;
@@ -29,12 +31,9 @@ public class EventLogging implements Serializable {
     @Column(name = "message")
     private String message;
 
-    @Column(name = "create_date")
+    @CreatedDate
+    @Column(name = "create_date", nullable = false)
     private ZonedDateTime createDate;
-
-    @OneToOne
-    @JoinColumn(unique = true)
-    private MobileUser logs;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "eventLoggings", allowSetters = true)
@@ -49,17 +48,17 @@ public class EventLogging implements Serializable {
         this.id = id;
     }
 
-    public Integer getRodneCislo() {
-        return rodneCislo;
+    public Integer getCitizenId() {
+        return citizenId;
     }
 
-    public EventLogging rodneCislo(Integer rodneCislo) {
-        this.rodneCislo = rodneCislo;
+    public EventLogging citizenId(Integer citizenId) {
+        this.citizenId = citizenId;
         return this;
     }
 
-    public void setRodneCislo(Integer rodneCislo) {
-        this.rodneCislo = rodneCislo;
+    public void setCitizenId(Integer citizenId) {
+        this.citizenId = citizenId;
     }
 
     public Integer getLogType() {
@@ -101,19 +100,6 @@ public class EventLogging implements Serializable {
         this.createDate = createDate;
     }
 
-    public MobileUser getLogs() {
-        return logs;
-    }
-
-    public EventLogging logs(MobileUser mobileUser) {
-        this.logs = mobileUser;
-        return this;
-    }
-
-    public void setLogs(MobileUser mobileUser) {
-        this.logs = mobileUser;
-    }
-
     public MobileUser getLogsByUser() {
         return logsByUser;
     }
@@ -149,7 +135,7 @@ public class EventLogging implements Serializable {
     public String toString() {
         return "EventLogging{" +
             "id=" + getId() +
-            ", rodneCislo=" + getRodneCislo() +
+            ", citizenId=" + getCitizenId() +
             ", logType=" + getLogType() +
             ", message='" + getMessage() + "'" +
             ", createDate='" + getCreateDate() + "'" +

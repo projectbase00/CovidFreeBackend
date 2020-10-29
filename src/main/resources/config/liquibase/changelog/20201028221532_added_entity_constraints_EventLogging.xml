@@ -8,12 +8,6 @@
     -->
     <changeSet id="20201028221532-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="logs_id"
-                                 baseTableName="event_logging"
-                                 constraintName="fk_event_logging_logs_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="mobile_user"/>
-
         <addForeignKeyConstraint baseColumnNames="logs_by_user_id"
                                  baseTableName="event_logging"
                                  constraintName="fk_event_logging_logs_by_user_id"

@@ -1,7 +1,9 @@
 package com.app.covidfree.domain;
 
-
 import javax.persistence.*;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -21,8 +23,8 @@ public class MobileUser implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "rodne_cislo")
-    private Integer rodneCislo;
+    @Column(name = "citizen_id")
+    private Integer citizenId;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -40,10 +42,12 @@ public class MobileUser implements Serializable {
     @Column(name = "status")
     private Boolean status;
 
-    @Column(name = "create_date")
+    @CreatedDate
+    @Column(name = "create_date", nullable = false)
     private ZonedDateTime createDate;
 
-    @Column(name = "update_date")
+    @LastModifiedDate
+    @Column(name = "update_date", nullable = false)
     private ZonedDateTime updateDate;
 
     @OneToMany(mappedBy = "logsByUser")
@@ -58,17 +62,17 @@ public class MobileUser implements Serializable {
         this.id = id;
     }
 
-    public Integer getRodneCislo() {
-        return rodneCislo;
+    public Integer getCitizenId() {
+        return citizenId;
     }
 
-    public MobileUser rodneCislo(Integer rodneCislo) {
-        this.rodneCislo = rodneCislo;
+    public MobileUser citizenId(Integer citizenId) {
+        this.citizenId = citizenId;
         return this;
     }
 
-    public void setRodneCislo(Integer rodneCislo) {
-        this.rodneCislo = rodneCislo;
+    public void setCitizenId(Integer citizenId) {
+        this.citizenId = citizenId;
     }
 
     public String getPhoneNumber() {
@@ -209,7 +213,7 @@ public class MobileUser implements Serializable {
     public String toString() {
         return "MobileUser{" +
             "id=" + getId() +
-            ", rodneCislo=" + getRodneCislo() +
+            ", citizenId=" + getCitizenId() +
             ", phoneNumber='" + getPhoneNumber() + "'" +
             ", idcardImage='" + getIdcardImage() + "'" +
             ", idcardImageContentType='" + getIdcardImageContentType() + "'" +

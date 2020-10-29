@@ -37,7 +37,7 @@ export const EventLogging = (props: IEventLoggingProps) => {
                   <Translate contentKey="global.field.id">ID</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="covidFreeBackendApp.eventLogging.rodneCislo">Rodne Cislo</Translate>
+                  <Translate contentKey="covidFreeBackendApp.eventLogging.citizenId">Citizen Id</Translate>
                 </th>
                 <th>
                   <Translate contentKey="covidFreeBackendApp.eventLogging.logType">Log Type</Translate>
@@ -47,9 +47,6 @@ export const EventLogging = (props: IEventLoggingProps) => {
                 </th>
                 <th>
                   <Translate contentKey="covidFreeBackendApp.eventLogging.createDate">Create Date</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="covidFreeBackendApp.eventLogging.logs">Logs</Translate>
                 </th>
                 <th>
                   <Translate contentKey="covidFreeBackendApp.eventLogging.logsByUser">Logs By User</Translate>
@@ -65,13 +62,12 @@ export const EventLogging = (props: IEventLoggingProps) => {
                       {eventLogging.id}
                     </Button>
                   </td>
-                  <td>{eventLogging.rodneCislo}</td>
+                  <td>{eventLogging.citizenId}</td>
                   <td>{eventLogging.logType}</td>
                   <td>{eventLogging.message}</td>
                   <td>
                     {eventLogging.createDate ? <TextFormat type="date" value={eventLogging.createDate} format={APP_DATE_FORMAT} /> : null}
                   </td>
-                  <td>{eventLogging.logs ? <Link to={`mobile-user/${eventLogging.logs.id}`}>{eventLogging.logs.id}</Link> : ''}</td>
                   <td>
                     {eventLogging.logsByUser ? (
                       <Link to={`mobile-user/${eventLogging.logsByUser.id}`}>{eventLogging.logsByUser.id}</Link>

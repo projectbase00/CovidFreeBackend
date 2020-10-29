@@ -37,7 +37,7 @@ export const MobileUser = (props: IMobileUserProps) => {
                   <Translate contentKey="global.field.id">ID</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="covidFreeBackendApp.mobileUser.rodneCislo">Rodne Cislo</Translate>
+                  <Translate contentKey="covidFreeBackendApp.mobileUser.citizenId">Citizen Id</Translate>
                 </th>
                 <th>
                   <Translate contentKey="covidFreeBackendApp.mobileUser.phoneNumber">Phone Number</Translate>
@@ -68,7 +68,7 @@ export const MobileUser = (props: IMobileUserProps) => {
                       {mobileUser.id}
                     </Button>
                   </td>
-                  <td>{mobileUser.rodneCislo}</td>
+                  <td>{mobileUser.citizenId}</td>
                   <td>{mobileUser.phoneNumber}</td>
                   <td>
                     {mobileUser.idcardImage ? (

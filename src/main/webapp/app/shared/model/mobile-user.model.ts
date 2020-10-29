@@ -3,7 +3,7 @@ import { IEventLogging } from 'app/shared/model/event-logging.model';
 
 export interface IMobileUser {
   id?: number;
-  rodneCislo?: number;
+  citizenId?: number;
   phoneNumber?: string;
   idcardImageContentType?: string;
   idcardImage?: any;

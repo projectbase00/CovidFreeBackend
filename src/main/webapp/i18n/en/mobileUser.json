@@ -16,7 +16,7 @@
       "detail": {
         "title": "Mobile User"
       },
-      "rodneCislo": "Rodne Cislo",
+      "citizenId": "Citizen Id",
       "phoneNumber": "Phone Number",
       "idcardImage": "Idcard Image",
       "valid": "Valid",

@@ -1,4 +1,4 @@
-id;rodne_cislo;log_type;message;create_date
+id;citizen_id;log_type;message;create_date
 1;18921;51859;Borders South Georgia and the South Sandwich Islands Kenya;2020-10-28T18:36:04
 2;89876;15474;Nebraska;2020-10-28T20:19:02
 3;45963;65904;Borders Buckinghamshire hacking;2020-10-28T20:02:20

@@ -34,8 +34,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class EventLoggingResourceIT {
 
-    private static final Integer DEFAULT_RODNE_CISLO = 1;
-    private static final Integer UPDATED_RODNE_CISLO = 2;
+    private static final Integer DEFAULT_CITIZEN_ID = 1;
+    private static final Integer UPDATED_CITIZEN_ID = 2;
 
     private static final Integer DEFAULT_LOG_TYPE = 1;
     private static final Integer UPDATED_LOG_TYPE = 2;
@@ -65,7 +65,7 @@ public class EventLoggingResourceIT {
      */
     public static EventLogging createEntity(EntityManager em) {
         EventLogging eventLogging = new EventLogging()
-            .rodneCislo(DEFAULT_RODNE_CISLO)
+            .citizenId(DEFAULT_CITIZEN_ID)
             .logType(DEFAULT_LOG_TYPE)
             .message(DEFAULT_MESSAGE)
             .createDate(DEFAULT_CREATE_DATE);
@@ -79,7 +79,7 @@ public class EventLoggingResourceIT {
      */
     public static EventLogging createUpdatedEntity(EntityManager em) {
         EventLogging eventLogging = new EventLogging()
-            .rodneCislo(UPDATED_RODNE_CISLO)
+            .citizenId(UPDATED_CITIZEN_ID)
             .logType(UPDATED_LOG_TYPE)
             .message(UPDATED_MESSAGE)
             .createDate(UPDATED_CREATE_DATE);
@@ -105,7 +105,7 @@ public class EventLoggingResourceIT {
         List<EventLogging> eventLoggingList = eventLoggingRepository.findAll();
         assertThat(eventLoggingList).hasSize(databaseSizeBeforeCreate + 1);
         EventLogging testEventLogging = eventLoggingList.get(eventLoggingList.size() - 1);
-        assertThat(testEventLogging.getRodneCislo()).isEqualTo(DEFAULT_RODNE_CISLO);
+        assertThat(testEventLogging.getCitizenId()).isEqualTo(DEFAULT_CITIZEN_ID);
         assertThat(testEventLogging.getLogType()).isEqualTo(DEFAULT_LOG_TYPE);
         assertThat(testEventLogging.getMessage()).isEqualTo(DEFAULT_MESSAGE);
         assertThat(testEventLogging.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
@@ -142,7 +142,7 @@ public class EventLoggingResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(eventLogging.getId().intValue())))
-            .andExpect(jsonPath("$.[*].rodneCislo").value(hasItem(DEFAULT_RODNE_CISLO)))
+            .andExpect(jsonPath("$.[*].citizenId").value(hasItem(DEFAULT_CITIZEN_ID)))
             .andExpect(jsonPath("$.[*].logType").value(hasItem(DEFAULT_LOG_TYPE)))
             .andExpect(jsonPath("$.[*].message").value(hasItem(DEFAULT_MESSAGE)))
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(sameInstant(DEFAULT_CREATE_DATE))));
@@ -159,7 +159,7 @@ public class EventLoggingResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(eventLogging.getId().intValue()))
-            .andExpect(jsonPath("$.rodneCislo").value(DEFAULT_RODNE_CISLO))
+            .andExpect(jsonPath("$.citizenId").value(DEFAULT_CITIZEN_ID))
             .andExpect(jsonPath("$.logType").value(DEFAULT_LOG_TYPE))
             .andExpect(jsonPath("$.message").value(DEFAULT_MESSAGE))
             .andExpect(jsonPath("$.createDate").value(sameInstant(DEFAULT_CREATE_DATE)));
@@ -185,7 +185,7 @@ public class EventLoggingResourceIT {
         // Disconnect from session so that the updates on updatedEventLogging are not directly saved in db
         em.detach(updatedEventLogging);
         updatedEventLogging
-            .rodneCislo(UPDATED_RODNE_CISLO)
+            .citizenId(UPDATED_CITIZEN_ID)
             .logType(UPDATED_LOG_TYPE)
             .message(UPDATED_MESSAGE)
             .createDate(UPDATED_CREATE_DATE);
@@ -199,7 +199,7 @@ public class EventLoggingResourceIT {
         List<EventLogging> eventLoggingList = eventLoggingRepository.findAll();
         assertThat(eventLoggingList).hasSize(databaseSizeBeforeUpdate);
         EventLogging testEventLogging = eventLoggingList.get(eventLoggingList.size() - 1);
-        assertThat(testEventLogging.getRodneCislo()).isEqualTo(UPDATED_RODNE_CISLO);
+        assertThat(testEventLogging.getCitizenId()).isEqualTo(UPDATED_CITIZEN_ID);
         assertThat(testEventLogging.getLogType()).isEqualTo(UPDATED_LOG_TYPE);
         assertThat(testEventLogging.getMessage()).isEqualTo(UPDATED_MESSAGE);
         assertThat(testEventLogging.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);

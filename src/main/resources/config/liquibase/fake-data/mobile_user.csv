@@ -1,4 +1,4 @@
-id;rodne_cislo;phone_number;idcard_image;idcard_image_content_type;valid;status;create_date;update_date
+id;citizen_id;phone_number;idcard_image;idcard_image_content_type;valid;status;create_date;update_date
 1;26642;JSON Practical;../fake-data/blob/hipster.png;image/png;false;true;2020-10-28T13:07:56;2020-10-28T02:58:42
 2;39072;Administrator;../fake-data/blob/hipster.png;image/png;false;false;2020-10-28T02:25:31;2020-10-28T06:51:54
 3;60519;Object-based;../fake-data/blob/hipster.png;image/png;false;true;2020-10-28T17:46:59;2020-10-28T06:58:21

@@ -89,10 +89,10 @@ export const MobileUserUpdate = (props: IMobileUserUpdateProps) => {
                 </AvGroup>
               ) : null}
               <AvGroup>
-                <Label id="rodneCisloLabel" for="mobile-user-rodneCislo">
-                  <Translate contentKey="covidFreeBackendApp.mobileUser.rodneCislo">Rodne Cislo</Translate>
+                <Label id="citizenIdLabel" for="mobile-user-citizenId">
+                  <Translate contentKey="covidFreeBackendApp.mobileUser.citizenId">Citizen Id</Translate>
                 </Label>
-                <AvField id="mobile-user-rodneCislo" type="string" className="form-control" name="rodneCislo" />
+                <AvField id="mobile-user-citizenId" type="string" className="form-control" name="citizenId" />
               </AvGroup>
               <AvGroup>
                 <Label id="phoneNumberLabel" for="mobile-user-phoneNumber">

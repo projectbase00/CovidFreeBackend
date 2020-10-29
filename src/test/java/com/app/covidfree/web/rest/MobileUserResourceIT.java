@@ -35,8 +35,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class MobileUserResourceIT {
 
-    private static final Integer DEFAULT_RODNE_CISLO = 1;
-    private static final Integer UPDATED_RODNE_CISLO = 2;
+    private static final Integer DEFAULT_CITIZEN_ID = 1;
+    private static final Integer UPDATED_CITIZEN_ID = 2;
 
     private static final String DEFAULT_PHONE_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_PHONE_NUMBER = "BBBBBBBBBB";
@@ -77,7 +77,7 @@ public class MobileUserResourceIT {
      */
     public static MobileUser createEntity(EntityManager em) {
         MobileUser mobileUser = new MobileUser()
-            .rodneCislo(DEFAULT_RODNE_CISLO)
+            .citizenId(DEFAULT_CITIZEN_ID)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
             .idcardImage(DEFAULT_IDCARD_IMAGE)
             .idcardImageContentType(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE)
@@ -95,7 +95,7 @@ public class MobileUserResourceIT {
      */
     public static MobileUser createUpdatedEntity(EntityManager em) {
         MobileUser mobileUser = new MobileUser()
-            .rodneCislo(UPDATED_RODNE_CISLO)
+            .citizenId(UPDATED_CITIZEN_ID)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .idcardImage(UPDATED_IDCARD_IMAGE)
             .idcardImageContentType(UPDATED_IDCARD_IMAGE_CONTENT_TYPE)
@@ -125,7 +125,7 @@ public class MobileUserResourceIT {
         List<MobileUser> mobileUserList = mobileUserRepository.findAll();
         assertThat(mobileUserList).hasSize(databaseSizeBeforeCreate + 1);
         MobileUser testMobileUser = mobileUserList.get(mobileUserList.size() - 1);
-        assertThat(testMobileUser.getRodneCislo()).isEqualTo(DEFAULT_RODNE_CISLO);
+        assertThat(testMobileUser.getCitizenId()).isEqualTo(DEFAULT_CITIZEN_ID);
         assertThat(testMobileUser.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
         assertThat(testMobileUser.getIdcardImage()).isEqualTo(DEFAULT_IDCARD_IMAGE);
         assertThat(testMobileUser.getIdcardImageContentType()).isEqualTo(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE);
@@ -166,7 +166,7 @@ public class MobileUserResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(mobileUser.getId().intValue())))
-            .andExpect(jsonPath("$.[*].rodneCislo").value(hasItem(DEFAULT_RODNE_CISLO)))
+            .andExpect(jsonPath("$.[*].citizenId").value(hasItem(DEFAULT_CITIZEN_ID)))
             .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER)))
             .andExpect(jsonPath("$.[*].idcardImageContentType").value(hasItem(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].idcardImage").value(hasItem(Base64Utils.encodeToString(DEFAULT_IDCARD_IMAGE))))
@@ -187,7 +187,7 @@ public class MobileUserResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(mobileUser.getId().intValue()))
-            .andExpect(jsonPath("$.rodneCislo").value(DEFAULT_RODNE_CISLO))
+            .andExpect(jsonPath("$.citizenId").value(DEFAULT_CITIZEN_ID))
             .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER))
             .andExpect(jsonPath("$.idcardImageContentType").value(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE))
             .andExpect(jsonPath("$.idcardImage").value(Base64Utils.encodeToString(DEFAULT_IDCARD_IMAGE)))
@@ -217,7 +217,7 @@ public class MobileUserResourceIT {
         // Disconnect from session so that the updates on updatedMobileUser are not directly saved in db
         em.detach(updatedMobileUser);
         updatedMobileUser
-            .rodneCislo(UPDATED_RODNE_CISLO)
+            .citizenId(UPDATED_CITIZEN_ID)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .idcardImage(UPDATED_IDCARD_IMAGE)
             .idcardImageContentType(UPDATED_IDCARD_IMAGE_CONTENT_TYPE)
@@ -235,7 +235,7 @@ public class MobileUserResourceIT {
         List<MobileUser> mobileUserList = mobileUserRepository.findAll();
         assertThat(mobileUserList).hasSize(databaseSizeBeforeUpdate);
         MobileUser testMobileUser = mobileUserList.get(mobileUserList.size() - 1);
-        assertThat(testMobileUser.getRodneCislo()).isEqualTo(UPDATED_RODNE_CISLO);
+        assertThat(testMobileUser.getCitizenId()).isEqualTo(UPDATED_CITIZEN_ID);
         assertThat(testMobileUser.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
         assertThat(testMobileUser.getIdcardImage()).isEqualTo(UPDATED_IDCARD_IMAGE);
         assertThat(testMobileUser.getIdcardImageContentType()).isEqualTo(UPDATED_IDCARD_IMAGE_CONTENT_TYPE);
