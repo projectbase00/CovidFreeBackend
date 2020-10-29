@@ -16,9 +16,6 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="citizen_id" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="otp_code" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -53,7 +50,6 @@
                   separator=";"
                   tableName="otp_codes">
             <column name="id" type="numeric"/>
-            <column name="citizen_id" type="numeric"/>
             <column name="otp_code" type="string"/>
             <column name="create_date" type="datetime"/>
             <column name="update_date" type="datetime"/>

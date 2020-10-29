@@ -20,9 +20,6 @@ public class OtpCodes implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "citizen_id")
-    private Integer citizenId;
-
     @Column(name = "otp_code")
     private String otpCode;
 
@@ -43,19 +40,6 @@ public class OtpCodes implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getCitizenId() {
-        return citizenId;
-    }
-
-    public OtpCodes citizenId(Integer citizenId) {
-        this.citizenId = citizenId;
-        return this;
-    }
-
-    public void setCitizenId(Integer citizenId) {
-        this.citizenId = citizenId;
     }
 
     public String getOtpCode() {
@@ -132,7 +116,6 @@ public class OtpCodes implements Serializable {
     public String toString() {
         return "OtpCodes{" +
             "id=" + getId() +
-            ", citizenId=" + getCitizenId() +
             ", otpCode='" + getOtpCode() + "'" +
             ", createDate='" + getCreateDate() + "'" +
             ", updateDate='" + getUpdateDate() + "'" +

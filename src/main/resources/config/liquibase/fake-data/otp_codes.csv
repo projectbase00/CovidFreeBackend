@@ -1,11 +1,11 @@
-id;citizen_id;otp_code;create_date;update_date
-1;9003;programming Strategist;2020-10-28T22:37:26;2020-10-29T13:18:51
-2;93834;Object-based Investment Account homogeneous;2020-10-29T19:11:37;2020-10-28T23:04:11
-3;26988;Borders whiteboard Saint Martin;2020-10-29T01:35:37;2020-10-29T19:59:25
-4;43087;technologies Island;2020-10-29T08:26:10;2020-10-29T16:47:23
-5;62716;Kids;2020-10-29T21:03:45;2020-10-29T20:25:03
-6;98076;Kwacha;2020-10-29T01:11:31;2020-10-29T03:31:03
-7;73083;Squares;2020-10-29T14:54:42;2020-10-29T13:12:05
-8;25993;upward-trending;2020-10-29T16:24:01;2020-10-29T03:18:01
-9;32930;navigate infrastructure Sleek;2020-10-29T16:16:29;2020-10-29T04:54:51
-10;10615;New York Fantastic withdrawal;2020-10-29T01:11:01;2020-10-29T15:05:41
+id;otp_code;create_date;update_date
+1;programming Strategist;2020-10-28T22:37:26;2020-10-29T13:18:51
+2;Object-based Investment Account homogeneous;2020-10-29T19:11:37;2020-10-28T23:04:11
+3;Borders whiteboard Saint Martin;2020-10-29T01:35:37;2020-10-29T19:59:25
+4;technologies Island;2020-10-29T08:26:10;2020-10-29T16:47:23
+5;Kids;2020-10-29T21:03:45;2020-10-29T20:25:03
+6;Kwacha;2020-10-29T01:11:31;2020-10-29T03:31:03
+7;Squares;2020-10-29T14:54:42;2020-10-29T13:12:05
+8;upward-trending;2020-10-29T16:24:01;2020-10-29T03:18:01
+9;navigate infrastructure Sleek;2020-10-29T16:16:29;2020-10-29T04:54:51
+10;New York Fantastic withdrawal;2020-10-29T01:11:01;2020-10-29T15:05:41

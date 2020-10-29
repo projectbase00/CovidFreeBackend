@@ -1,14 +1,23 @@
 package com.app.covidfree.web.rest;
 
 import com.app.covidfree.domain.MobileUser;
+import com.app.covidfree.domain.OtpCodes;
 import com.app.covidfree.repository.MobileUserRepository;
+import com.app.covidfree.repository.OtpCodesRepository;
+import com.app.covidfree.service.MobilUserService;
+import com.app.covidfree.service.dto.CodeDto;
+import com.app.covidfree.service.dto.HashDto;
+import com.app.covidfree.service.dto.PhoneNumberDto;
 import com.app.covidfree.web.rest.errors.BadRequestAlertException;
+import com.netflix.ribbon.proxy.annotation.Http;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +43,12 @@ public class MobileUserResource {
     private String applicationName;
 
     private final MobileUserRepository mobileUserRepository;
+
+    @Autowired
+    MobilUserService mobileUserService;
+
+    @Autowired
+    OtpCodesRepository otpCodesRepository;
 
     public MobileUserResource(MobileUserRepository mobileUserRepository) {
         this.mobileUserRepository = mobileUserRepository;
@@ -101,6 +116,32 @@ public class MobileUserResource {
         log.debug("REST request to get MobileUser : {}", id);
         Optional<MobileUser> mobileUser = mobileUserRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(mobileUser);
+    }
+
+    @PostMapping("/mobile-users/getphonenumberbyid")
+    public ResponseEntity<PhoneNumberDto> getMobileUserbyCitizenId(@RequestBody PhoneNumberDto phoneNumberDto) {
+        log.debug("REST request to get MobileUser : {}", phoneNumberDto.getCitizenId());
+        Optional<MobileUser> mobileUser = mobileUserRepository.findByCitizenId(phoneNumberDto.getCitizenId());
+        return mobileUser.isPresent() ? ResponseEntity.status(HttpStatus.OK)
+        .body(new PhoneNumberDto(mobileUser.get().getCitizenId(), mobileUser.get().getPhoneNumber())) :  ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    }
+
+    @PostMapping("/mobile-users/getmessagecodebycitizen")
+    public ResponseEntity<CodeDto> getMessageCodebyCitizen(@RequestBody PhoneNumberDto phoneNumberDto) {
+        log.debug("REST request to get MobileUser : {}", phoneNumberDto.getCitizenId());
+        Optional<MobileUser> mobileUser = mobileUserRepository.findByCitizenIdAndPhoneNumber(phoneNumberDto.getCitizenId(), phoneNumberDto.getPhoneNumber());
+        
+        return mobileUser.isPresent() ? ResponseEntity.status(HttpStatus.OK).body(new CodeDto("123456")) :  ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    }
+
+    @PostMapping("/mobile-users/gethashcodebycitizen")
+    public ResponseEntity<HashDto> getHashCodebyCitizen(@RequestBody PhoneNumberDto phoneNumberDto) {
+        log.debug("REST request to get MobileUser : {}", phoneNumberDto.getCitizenId());
+        Optional<OtpCodes> otpcode = otpCodesRepository.findOtpCodeByCitizen(phoneNumberDto.getCitizenId(), phoneNumberDto.getPhoneNumber());
+        if(otpcode.isPresent() && otpcode.get().getOtpCode() == phoneNumberDto.getCode()){
+            return ResponseEntity.status(HttpStatus.OK).body(new HashDto(mobileUserService.generateKey(phoneNumberDto.getCitizenId())));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
 
     /**

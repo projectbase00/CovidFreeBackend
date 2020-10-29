@@ -65,7 +65,6 @@ public class OtpCodesResourceIT {
      */
     public static OtpCodes createEntity(EntityManager em) {
         OtpCodes otpCodes = new OtpCodes()
-            .citizenId(DEFAULT_CITIZEN_ID)
             .otpCode(DEFAULT_OTP_CODE)
             .createDate(DEFAULT_CREATE_DATE)
             .updateDate(DEFAULT_UPDATE_DATE);
@@ -79,7 +78,6 @@ public class OtpCodesResourceIT {
      */
     public static OtpCodes createUpdatedEntity(EntityManager em) {
         OtpCodes otpCodes = new OtpCodes()
-            .citizenId(UPDATED_CITIZEN_ID)
             .otpCode(UPDATED_OTP_CODE)
             .createDate(UPDATED_CREATE_DATE)
             .updateDate(UPDATED_UPDATE_DATE);
@@ -105,7 +103,6 @@ public class OtpCodesResourceIT {
         List<OtpCodes> otpCodesList = otpCodesRepository.findAll();
         assertThat(otpCodesList).hasSize(databaseSizeBeforeCreate + 1);
         OtpCodes testOtpCodes = otpCodesList.get(otpCodesList.size() - 1);
-        assertThat(testOtpCodes.getCitizenId()).isEqualTo(DEFAULT_CITIZEN_ID);
         assertThat(testOtpCodes.getOtpCode()).isEqualTo(DEFAULT_OTP_CODE);
         assertThat(testOtpCodes.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
         assertThat(testOtpCodes.getUpdateDate()).isEqualTo(DEFAULT_UPDATE_DATE);
@@ -185,7 +182,6 @@ public class OtpCodesResourceIT {
         // Disconnect from session so that the updates on updatedOtpCodes are not directly saved in db
         em.detach(updatedOtpCodes);
         updatedOtpCodes
-            .citizenId(UPDATED_CITIZEN_ID)
             .otpCode(UPDATED_OTP_CODE)
             .createDate(UPDATED_CREATE_DATE)
             .updateDate(UPDATED_UPDATE_DATE);
@@ -199,7 +195,6 @@ public class OtpCodesResourceIT {
         List<OtpCodes> otpCodesList = otpCodesRepository.findAll();
         assertThat(otpCodesList).hasSize(databaseSizeBeforeUpdate);
         OtpCodes testOtpCodes = otpCodesList.get(otpCodesList.size() - 1);
-        assertThat(testOtpCodes.getCitizenId()).isEqualTo(UPDATED_CITIZEN_ID);
         assertThat(testOtpCodes.getOtpCode()).isEqualTo(UPDATED_OTP_CODE);
         assertThat(testOtpCodes.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);
         assertThat(testOtpCodes.getUpdateDate()).isEqualTo(UPDATED_UPDATE_DATE);
