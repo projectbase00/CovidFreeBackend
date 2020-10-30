@@ -14,7 +14,7 @@
     "cacheProvider": "no",
     "websocket": false,
     "databaseType": "sql",
-    "devDatabaseType": "h2Memory",
+    "devDatabaseType": "h2Disk",
     "prodDatabaseType": "mysql",
     "searchEngine": false,
     "messageBroker": false,
@@ -36,10 +36,7 @@
     "otherModules": [],
     "enableTranslation": true,
     "nativeLanguage": "en",
-    "languages": [
-      "en",
-      "cs"
-    ],
+    "languages": ["en", "cs"],
     "blueprints": []
   }
 }
