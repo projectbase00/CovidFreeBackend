@@ -9,13 +9,20 @@ import { IRootState } from 'app/shared/reducers';
 import { getEntities } from './mobile-user.reducer';
 import { IMobileUser } from 'app/shared/model/mobile-user.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
-
+import MUIDataTable from "mui-datatables";
 export interface IMobileUserProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
 export const MobileUser = (props: IMobileUserProps) => {
   useEffect(() => {
     props.getEntities();
   }, []);
+
+  const options = {
+    filterType: "dropdown",
+    responsive: "scroll",
+    selectableRows : "none",
+    selectableRowsHeader : false
+  };
 
   const { mobileUserList, match, loading } = props;
   return (
@@ -41,9 +48,6 @@ export const MobileUser = (props: IMobileUserProps) => {
                 </th>
                 <th>
                   <Translate contentKey="covidFreeBackendApp.mobileUser.phoneNumber">Phone Number</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="covidFreeBackendApp.mobileUser.hash">Hash</Translate>
                 </th>
                 <th>
                   <Translate contentKey="covidFreeBackendApp.mobileUser.idcardImage">Idcard Image</Translate>
@@ -76,7 +80,6 @@ export const MobileUser = (props: IMobileUserProps) => {
                   </td>
                   <td>{mobileUser.citizenId}</td>
                   <td>{mobileUser.phoneNumber}</td>
-                  <td>{mobileUser.hash}</td>
                   <td>
                     {mobileUser.idcardImage ? (
                       <div>

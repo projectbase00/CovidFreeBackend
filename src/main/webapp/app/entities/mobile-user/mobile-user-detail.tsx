@@ -38,12 +38,6 @@ export const MobileUserDetail = (props: IMobileUserDetailProps) => {
           </dt>
           <dd>{mobileUserEntity.phoneNumber}</dd>
           <dt>
-            <span id="hash">
-              <Translate contentKey="covidFreeBackendApp.mobileUser.hash">Hash</Translate>
-            </span>
-          </dt>
-          <dd>{mobileUserEntity.hash}</dd>
-          <dt>
             <span id="idcardImage">
               <Translate contentKey="covidFreeBackendApp.mobileUser.idcardImage">Idcard Image</Translate>
             </span>

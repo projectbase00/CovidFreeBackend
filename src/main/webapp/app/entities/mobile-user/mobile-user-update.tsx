@@ -106,12 +106,6 @@ export const MobileUserUpdate = (props: IMobileUserUpdateProps) => {
                 <AvField id="mobile-user-phoneNumber" type="text" name="phoneNumber" />
               </AvGroup>
               <AvGroup>
-                <Label id="hashLabel" for="mobile-user-hash">
-                  <Translate contentKey="covidFreeBackendApp.mobileUser.hash">Hash</Translate>
-                </Label>
-                <AvField id="mobile-user-hash" type="text" name="hash" />
-              </AvGroup>
-              <AvGroup>
                 <AvGroup>
                   <Label id="idcardImageLabel" for="idcardImage">
                     <Translate contentKey="covidFreeBackendApp.mobileUser.idcardImage">Idcard Image</Translate>
