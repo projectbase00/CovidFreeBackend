@@ -5,6 +5,7 @@ import com.app.covidfree.domain.OtpCodes;
 import com.app.covidfree.repository.MobileUserRepository;
 import com.app.covidfree.repository.OtpCodesRepository;
 import com.app.covidfree.service.MobilUserService;
+import com.app.covidfree.service.OtpService;
 import com.app.covidfree.service.dto.CodeDto;
 import com.app.covidfree.service.dto.HashDto;
 import com.app.covidfree.service.dto.PhoneNumberDto;
@@ -47,6 +48,9 @@ public class MobileUserResource {
     @Autowired
     MobilUserService mobileUserService;
 
+    @Autowired 
+    OtpService otpService;
+
     @Autowired
     OtpCodesRepository otpCodesRepository;
 
@@ -68,6 +72,10 @@ public class MobileUserResource {
             throw new BadRequestAlertException("A new mobileUser cannot already have an ID", ENTITY_NAME, "idexists");
         }
         mobileUser.setHash(mobileUserService.generateKey(mobileUser.getCitizenId()));
+        OtpCodes otpcode = new OtpCodes();
+        otpcode.setOtpCode(otpService.sendMessage(mobileUser.getPhoneNumber()));
+        otpCodesRepository.saveAndFlush(otpcode);
+        mobileUser.setOtpCodes(otpcode);
         MobileUser result = mobileUserRepository.save(mobileUser);
         return ResponseEntity.created(new URI("/api/mobile-users/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -133,11 +141,6 @@ public class MobileUserResource {
         log.debug("REST request to get MobileUser : {}", phoneNumberDto.getCitizenId());
         Optional<MobileUser> mobileUser = mobileUserRepository.findByCitizenIdAndPhoneNumber(phoneNumberDto.getCitizenId(), phoneNumberDto.getPhoneNumber());
         if (mobileUser.isPresent()){
-            OtpCodes otpcode = new OtpCodes();
-            otpcode.setOtpCode("123456");
-            otpCodesRepository.saveAndFlush(otpcode);
-            mobileUser.get().setOtpCodes(otpcode);
-            mobileUserRepository.saveAndFlush(mobileUser.get());
             return ResponseEntity.status(HttpStatus.OK).body(new CodeDto("123456"));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -146,7 +149,6 @@ public class MobileUserResource {
     @PostMapping("/mobile-users/gethashcodebycitizen")
     public ResponseEntity<HashDto> getHashCodebyCitizen(@RequestBody PhoneNumberDto phoneNumberDto) {
         log.debug("REST request to get MobileUser : {}", phoneNumberDto.getCitizenId());
-        List<OtpCodes> otpCodes = otpCodesRepository.findAll();
         Optional<OtpCodes> otpcode = otpCodesRepository.findOtpCodeByCitizen(phoneNumberDto.getCitizenId(), phoneNumberDto.getPhoneNumber());
         if(otpcode.isPresent() && otpcode.get().getOtpCode().equals(phoneNumberDto.getCode())){
             return ResponseEntity.status(HttpStatus.OK).body(new HashDto(mobileUserService.generateKey(phoneNumberDto.getCitizenId())));
