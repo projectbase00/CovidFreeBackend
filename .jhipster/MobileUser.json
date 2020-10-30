@@ -24,7 +24,7 @@
     },
     {
       "fieldName": "status",
-      "fieldType": "Boolean"
+      "fieldType": "Integer"
     },
     {
       "fieldName": "createDate",

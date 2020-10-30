@@ -40,7 +40,7 @@ public class MobileUser implements Serializable {
     private Boolean valid;
 
     @Column(name = "status")
-    private Boolean status;
+    private Integer statusType;
 
     @Column(name = "create_date")
     private ZonedDateTime createDate;
@@ -142,17 +142,17 @@ public class MobileUser implements Serializable {
         this.valid = valid;
     }
 
-    public Boolean isStatus() {
-        return status;
+    public Integer getStatusType() {
+        return statusType;
     }
 
-    public MobileUser status(Boolean status) {
-        this.status = status;
+    public MobileUser statusType(Integer statusType) {
+        this.statusType = statusType;
         return this;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setStatusType(Integer statusType) {
+        this.statusType = statusType;
     }
 
     public ZonedDateTime getCreateDate() {
@@ -247,7 +247,7 @@ public class MobileUser implements Serializable {
             ", idcardImage='" + getIdcardImage() + "'" +
             ", idcardImageContentType='" + getIdcardImageContentType() + "'" +
             ", valid='" + isValid() + "'" +
-            ", status='" + isStatus() + "'" +
+            ", status='" + getStatusType() + "'" +
             ", createDate='" + getCreateDate() + "'" +
             ", updateDate='" + getUpdateDate() + "'" +
             "}";

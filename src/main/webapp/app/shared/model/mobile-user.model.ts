@@ -10,7 +10,7 @@ export interface IMobileUser {
   idcardImageContentType?: string;
   idcardImage?: any;
   valid?: boolean;
-  status?: boolean;
+  statusType?: boolean;
   createDate?: string;
   updateDate?: string;
   otpCodes?: IOtpCodes;
@@ -19,5 +19,4 @@ export interface IMobileUser {
 
 export const defaultValue: Readonly<IMobileUser> = {
   valid: false,
-  status: false,
 };

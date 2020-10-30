@@ -128,6 +128,20 @@ public class MobileUserResource {
         return ResponseUtil.wrapOrNotFound(mobileUser);
     }
 
+    @GetMapping("/mobile-users/acceptUser/{id}")
+    public ResponseEntity<Boolean> accepMobileUser(@PathVariable Long id) {
+        log.debug("REST request to get MobileUser : {}", id);
+        mobileUserRepository.updateUserValidationById(id,1);
+        return ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @GetMapping("/mobile-users/rejectUser/{id}")
+    public ResponseEntity<Boolean> rejectMobileUser(@PathVariable Long id) {
+        log.debug("REST request to get MobileUser : {}", id);
+        mobileUserRepository.updateUserValidationById(id,0);
+        return ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
     @GetMapping("/mobile-users/getphonenumberbyid/{citizenId}")
     public ResponseEntity<PhoneNumberDto> getMobileUserbyCitizenId(@PathVariable Integer citizenId) {
         log.debug("REST request to get MobileUser : {}", citizenId);
@@ -149,9 +163,9 @@ public class MobileUserResource {
     @PostMapping("/mobile-users/gethashcodebycitizen")
     public ResponseEntity<HashDto> getHashCodebyCitizen(@RequestBody PhoneNumberDto phoneNumberDto) {
         log.debug("REST request to get MobileUser : {}", phoneNumberDto.getCitizenId());
-        Optional<OtpCodes> otpcode = otpCodesRepository.findOtpCodeByCitizen(phoneNumberDto.getCitizenId(), phoneNumberDto.getPhoneNumber());
-        if(otpcode.isPresent() && otpcode.get().getOtpCode().equals(phoneNumberDto.getCode())){
-            return ResponseEntity.status(HttpStatus.OK).body(new HashDto(mobileUserService.generateKey(phoneNumberDto.getCitizenId())));
+        Optional<MobileUser> mobiluser = mobileUserRepository.findByCitizenIdAndPhoneNumber(phoneNumberDto.getCitizenId(), phoneNumberDto.getPhoneNumber());
+        if(mobiluser.isPresent() && mobiluser.get().getOtpCodes().getOtpCode().equals(phoneNumberDto.getCode())){
+            return ResponseEntity.status(HttpStatus.OK).body(new HashDto(mobiluser.get().getHash().concat(mobiluser.get().getHash())));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }

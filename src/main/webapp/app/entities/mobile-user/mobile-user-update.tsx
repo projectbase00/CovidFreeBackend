@@ -143,9 +143,9 @@ export const MobileUserUpdate = (props: IMobileUserUpdateProps) => {
                   <Translate contentKey="covidFreeBackendApp.mobileUser.valid">Valid</Translate>
                 </Label>
               </AvGroup>
-              <AvGroup check>
+              <AvGroup>
                 <Label id="statusLabel">
-                  <AvInput id="mobile-user-status" type="checkbox" className="form-check-input" name="status" />
+                  <AvInput id="mobile-user-status" type="string" className="form-control" name="statusType" />
                   <Translate contentKey="covidFreeBackendApp.mobileUser.status">Status</Translate>
                 </Label>
               </AvGroup>

@@ -52,8 +52,8 @@ public class MobileUserResourceIT {
     private static final Boolean DEFAULT_VALID = false;
     private static final Boolean UPDATED_VALID = true;
 
-    private static final Boolean DEFAULT_STATUS = false;
-    private static final Boolean UPDATED_STATUS = true;
+    private static final Integer DEFAULT_STATUS = 0;
+    private static final Integer UPDATED_STATUS = 1;
 
     private static final ZonedDateTime DEFAULT_CREATE_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_CREATE_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
@@ -86,7 +86,7 @@ public class MobileUserResourceIT {
             .idcardImage(DEFAULT_IDCARD_IMAGE)
             .idcardImageContentType(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE)
             .valid(DEFAULT_VALID)
-            .status(DEFAULT_STATUS)
+            .statusType(DEFAULT_STATUS)
             .createDate(DEFAULT_CREATE_DATE)
             .updateDate(DEFAULT_UPDATE_DATE);
         return mobileUser;
@@ -105,7 +105,7 @@ public class MobileUserResourceIT {
             .idcardImage(UPDATED_IDCARD_IMAGE)
             .idcardImageContentType(UPDATED_IDCARD_IMAGE_CONTENT_TYPE)
             .valid(UPDATED_VALID)
-            .status(UPDATED_STATUS)
+            .statusType(UPDATED_STATUS)
             .createDate(UPDATED_CREATE_DATE)
             .updateDate(UPDATED_UPDATE_DATE);
         return mobileUser;
@@ -136,7 +136,7 @@ public class MobileUserResourceIT {
         assertThat(testMobileUser.getIdcardImage()).isEqualTo(DEFAULT_IDCARD_IMAGE);
         assertThat(testMobileUser.getIdcardImageContentType()).isEqualTo(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE);
         assertThat(testMobileUser.isValid()).isEqualTo(DEFAULT_VALID);
-        assertThat(testMobileUser.isStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testMobileUser.getStatusType()).isEqualTo(DEFAULT_STATUS);
         assertThat(testMobileUser.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
         assertThat(testMobileUser.getUpdateDate()).isEqualTo(DEFAULT_UPDATE_DATE);
     }
@@ -178,7 +178,7 @@ public class MobileUserResourceIT {
             .andExpect(jsonPath("$.[*].idcardImageContentType").value(hasItem(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].idcardImage").value(hasItem(Base64Utils.encodeToString(DEFAULT_IDCARD_IMAGE))))
             .andExpect(jsonPath("$.[*].valid").value(hasItem(DEFAULT_VALID.booleanValue())))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.booleanValue())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.intValue())))
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(sameInstant(DEFAULT_CREATE_DATE))))
             .andExpect(jsonPath("$.[*].updateDate").value(hasItem(sameInstant(DEFAULT_UPDATE_DATE))));
     }
@@ -200,7 +200,7 @@ public class MobileUserResourceIT {
             .andExpect(jsonPath("$.idcardImageContentType").value(DEFAULT_IDCARD_IMAGE_CONTENT_TYPE))
             .andExpect(jsonPath("$.idcardImage").value(Base64Utils.encodeToString(DEFAULT_IDCARD_IMAGE)))
             .andExpect(jsonPath("$.valid").value(DEFAULT_VALID.booleanValue()))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.booleanValue()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.intValue()))
             .andExpect(jsonPath("$.createDate").value(sameInstant(DEFAULT_CREATE_DATE)))
             .andExpect(jsonPath("$.updateDate").value(sameInstant(DEFAULT_UPDATE_DATE)));
     }
@@ -231,7 +231,7 @@ public class MobileUserResourceIT {
             .idcardImage(UPDATED_IDCARD_IMAGE)
             .idcardImageContentType(UPDATED_IDCARD_IMAGE_CONTENT_TYPE)
             .valid(UPDATED_VALID)
-            .status(UPDATED_STATUS)
+            .statusType(UPDATED_STATUS)
             .createDate(UPDATED_CREATE_DATE)
             .updateDate(UPDATED_UPDATE_DATE);
 
@@ -250,7 +250,7 @@ public class MobileUserResourceIT {
         assertThat(testMobileUser.getIdcardImage()).isEqualTo(UPDATED_IDCARD_IMAGE);
         assertThat(testMobileUser.getIdcardImageContentType()).isEqualTo(UPDATED_IDCARD_IMAGE_CONTENT_TYPE);
         assertThat(testMobileUser.isValid()).isEqualTo(UPDATED_VALID);
-        assertThat(testMobileUser.isStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testMobileUser.getStatusType()).isEqualTo(UPDATED_STATUS);
         assertThat(testMobileUser.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);
         assertThat(testMobileUser.getUpdateDate()).isEqualTo(UPDATED_UPDATE_DATE);
     }

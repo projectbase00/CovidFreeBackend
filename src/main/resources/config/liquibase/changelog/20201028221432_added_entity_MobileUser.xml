@@ -34,7 +34,7 @@
             <column name="valid" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="status" type="boolean">
+            <column name="status" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="create_date" type="datetime">
@@ -76,7 +76,7 @@
             <column name="hash" type="string"/>
             <column name="idcard_image" type="blob"/>
             <column name="idcard_image_content_type" type="string"/>
-            <column name="valid" type="boolean"/>
+            <column name="valid" type="numeric"/>
             <column name="status" type="boolean"/>
             <column name="create_date" type="datetime"/>
             <column name="update_date" type="datetime"/>

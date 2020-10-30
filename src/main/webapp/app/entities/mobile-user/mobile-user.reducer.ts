@@ -151,6 +151,24 @@ export const deleteEntity: ICrudDeleteAction<IMobileUser> = id => async dispatch
   return result;
 };
 
+export const acceptUser = (id, event) => {
+  const requestUrl = `${apiUrl}/acceptUser/${id}`;
+  return axios
+    .get<boolean>(requestUrl)
+    .then(data => {
+      event(data);
+    });
+};
+
+export const rejectUser = (id, event) => {
+  const requestUrl = `${apiUrl}/rejectUser/${id}`;
+  return axios
+    .get<boolean>(requestUrl)
+    .then(data => {
+      event(data);
+    });
+};
+
 export const setBlob = (name, data, contentType?) => ({
   type: ACTION_TYPES.SET_BLOB,
   payload: {

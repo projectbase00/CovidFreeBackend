@@ -86,10 +86,42 @@
     "field": {
       "id": "ID"
     },
+    "status": {
+      "success": "Success",
+      "failure": "Failure"
+    },
     "ribbon": {
       "dev": "Development"
     },
-    "item-count": "Showing {{first}} - {{second}} of {{total}} items."
+    "item-count": "Showing {{first}} - {{second}} of {{total}} items.",
+    "table": {
+      "body": {
+        "noMatch": "Sorry, no matching records found",
+        "toolTip": "Sort"
+      },
+      "pagination": {
+        "next": "Next Page",
+        "previous": "Previous Page",
+        "rowsPerPage": "Rows per page:",
+        "displayRows": "of"
+      },
+      "toolbar": {
+        "search": "Search",
+        "downloadCsv": "Download CSV",
+        "print": "Print",
+        "viewColumns": "View Columns",
+        "filterTable": "Filter Table"
+      },
+      "filter": {
+        "all": "All",
+        "title": "FILTERS",
+        "reset": "RESET"
+      },
+      "viewColumns": {
+        "title": "Show Columns",
+        "titleAria": "Show/Hide Table Columns"
+      }
+    }
   },
   "entity": {
     "action": {
@@ -101,7 +133,9 @@
       "edit": "Edit",
       "open": "Open",
       "save": "Save",
-      "view": "View"
+      "view": "View",
+      "accept": "Accept",
+      "reject": "Reject"
     },
     "detail": {
       "field": "Field",
