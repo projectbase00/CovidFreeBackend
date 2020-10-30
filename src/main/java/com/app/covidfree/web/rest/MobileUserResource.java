@@ -9,6 +9,7 @@ import com.app.covidfree.service.OtpService;
 import com.app.covidfree.service.dto.CodeDto;
 import com.app.covidfree.service.dto.HashDto;
 import com.app.covidfree.service.dto.PhoneNumberDto;
+import com.app.covidfree.service.enums.StatusType;
 import com.app.covidfree.web.rest.errors.BadRequestAlertException;
 import com.netflix.ribbon.proxy.annotation.Http;
 
@@ -76,6 +77,7 @@ public class MobileUserResource {
         otpcode.setOtpCode(otpService.sendMessage(mobileUser.getPhoneNumber()));
         otpCodesRepository.saveAndFlush(otpcode);
         mobileUser.setOtpCodes(otpcode);
+        mobileUser.setStatusType(StatusType.PENDING_ADMIN_VERIFICATION.getStatus());
         MobileUser result = mobileUserRepository.save(mobileUser);
         return ResponseEntity.created(new URI("/api/mobile-users/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -131,14 +133,14 @@ public class MobileUserResource {
     @GetMapping("/mobile-users/acceptUser/{id}")
     public ResponseEntity<Boolean> accepMobileUser(@PathVariable Long id) {
         log.debug("REST request to get MobileUser : {}", id);
-        mobileUserRepository.updateUserValidationById(id,1);
+        mobileUserRepository.updateUserValidationById(id,StatusType.ACCEPTED.getStatus());
         return ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @GetMapping("/mobile-users/rejectUser/{id}")
     public ResponseEntity<Boolean> rejectMobileUser(@PathVariable Long id) {
         log.debug("REST request to get MobileUser : {}", id);
-        mobileUserRepository.updateUserValidationById(id,0);
+        mobileUserRepository.updateUserValidationById(id,StatusType.REJECTED.getStatus());
         return ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
