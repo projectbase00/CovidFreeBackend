@@ -84,12 +84,6 @@ export const OtpCodesUpdate = (props: IOtpCodesUpdateProps) => {
                 </AvGroup>
               ) : null}
               <AvGroup>
-                <Label id="citizenIdLabel" for="otp-codes-citizenId">
-                  <Translate contentKey="covidFreeBackendApp.otpCodes.citizenId">Citizen Id</Translate>
-                </Label>
-                <AvField id="otp-codes-citizenId" type="string" className="form-control" name="citizenId" />
-              </AvGroup>
-              <AvGroup>
                 <Label id="otpCodeLabel" for="otp-codes-otpCode">
                   <Translate contentKey="covidFreeBackendApp.otpCodes.otpCode">Otp Code</Translate>
                 </Label>

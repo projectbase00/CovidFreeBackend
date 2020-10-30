@@ -26,12 +26,6 @@ export const OtpCodesDetail = (props: IOtpCodesDetailProps) => {
         </h2>
         <dl className="jh-entity-details">
           <dt>
-            <span id="citizenId">
-              <Translate contentKey="covidFreeBackendApp.otpCodes.citizenId">Citizen Id</Translate>
-            </span>
-          </dt>
-          <dd>{otpCodesEntity.citizenId}</dd>
-          <dt>
             <span id="otpCode">
               <Translate contentKey="covidFreeBackendApp.otpCodes.otpCode">Otp Code</Translate>
             </span>

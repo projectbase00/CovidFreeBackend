@@ -67,6 +67,7 @@ public class MobileUserResource {
         if (mobileUser.getId() != null) {
             throw new BadRequestAlertException("A new mobileUser cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        mobileUser.setHash(mobileUserService.generateKey(mobileUser.getCitizenId()));
         MobileUser result = mobileUserRepository.save(mobileUser);
         return ResponseEntity.created(new URI("/api/mobile-users/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -88,6 +89,7 @@ public class MobileUserResource {
         if (mobileUser.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        mobileUser.setHash(mobileUserService.generateKey(mobileUser.getCitizenId()));
         MobileUser result = mobileUserRepository.save(mobileUser);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, mobileUser.getId().toString()))
@@ -118,10 +120,10 @@ public class MobileUserResource {
         return ResponseUtil.wrapOrNotFound(mobileUser);
     }
 
-    @PostMapping("/mobile-users/getphonenumberbyid")
-    public ResponseEntity<PhoneNumberDto> getMobileUserbyCitizenId(@RequestBody PhoneNumberDto phoneNumberDto) {
-        log.debug("REST request to get MobileUser : {}", phoneNumberDto.getCitizenId());
-        Optional<MobileUser> mobileUser = mobileUserRepository.findByCitizenId(phoneNumberDto.getCitizenId());
+    @GetMapping("/mobile-users/getphonenumberbyid/{citizenId}")
+    public ResponseEntity<PhoneNumberDto> getMobileUserbyCitizenId(@PathVariable Integer citizenId) {
+        log.debug("REST request to get MobileUser : {}", citizenId);
+        Optional<MobileUser> mobileUser = mobileUserRepository.findByCitizenId(citizenId);
         return mobileUser.isPresent() ? ResponseEntity.status(HttpStatus.OK)
         .body(new PhoneNumberDto(mobileUser.get().getCitizenId(), mobileUser.get().getPhoneNumber())) :  ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
@@ -130,15 +132,23 @@ public class MobileUserResource {
     public ResponseEntity<CodeDto> getMessageCodebyCitizen(@RequestBody PhoneNumberDto phoneNumberDto) {
         log.debug("REST request to get MobileUser : {}", phoneNumberDto.getCitizenId());
         Optional<MobileUser> mobileUser = mobileUserRepository.findByCitizenIdAndPhoneNumber(phoneNumberDto.getCitizenId(), phoneNumberDto.getPhoneNumber());
-        
-        return mobileUser.isPresent() ? ResponseEntity.status(HttpStatus.OK).body(new CodeDto("123456")) :  ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        if (mobileUser.isPresent()){
+            OtpCodes otpcode = new OtpCodes();
+            otpcode.setOtpCode("123456");
+            otpCodesRepository.saveAndFlush(otpcode);
+            mobileUser.get().setOtpCodes(otpcode);
+            mobileUserRepository.saveAndFlush(mobileUser.get());
+            return ResponseEntity.status(HttpStatus.OK).body(new CodeDto("123456"));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
 
     @PostMapping("/mobile-users/gethashcodebycitizen")
     public ResponseEntity<HashDto> getHashCodebyCitizen(@RequestBody PhoneNumberDto phoneNumberDto) {
         log.debug("REST request to get MobileUser : {}", phoneNumberDto.getCitizenId());
+        List<OtpCodes> otpCodes = otpCodesRepository.findAll();
         Optional<OtpCodes> otpcode = otpCodesRepository.findOtpCodeByCitizen(phoneNumberDto.getCitizenId(), phoneNumberDto.getPhoneNumber());
-        if(otpcode.isPresent() && otpcode.get().getOtpCode() == phoneNumberDto.getCode()){
+        if(otpcode.isPresent() && otpcode.get().getOtpCode().equals(phoneNumberDto.getCode())){
             return ResponseEntity.status(HttpStatus.OK).body(new HashDto(mobileUserService.generateKey(phoneNumberDto.getCitizenId())));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

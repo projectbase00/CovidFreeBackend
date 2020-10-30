@@ -2,10 +2,6 @@
   "name": "OtpCodes",
   "fields": [
     {
-      "fieldName": "citizenId",
-      "fieldType": "Integer"
-    },
-    {
       "fieldName": "otpCode",
       "fieldType": "String"
     },

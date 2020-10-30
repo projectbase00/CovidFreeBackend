@@ -37,9 +37,6 @@ export const OtpCodes = (props: IOtpCodesProps) => {
                   <Translate contentKey="global.field.id">ID</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="covidFreeBackendApp.otpCodes.citizenId">Citizen Id</Translate>
-                </th>
-                <th>
                   <Translate contentKey="covidFreeBackendApp.otpCodes.otpCode">Otp Code</Translate>
                 </th>
                 <th>
@@ -59,7 +56,6 @@ export const OtpCodes = (props: IOtpCodesProps) => {
                       {otpCodes.id}
                     </Button>
                   </td>
-                  <td>{otpCodes.citizenId}</td>
                   <td>{otpCodes.otpCode}</td>
                   <td>{otpCodes.createDate ? <TextFormat type="date" value={otpCodes.createDate} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{otpCodes.updateDate ? <TextFormat type="date" value={otpCodes.updateDate} format={APP_DATE_FORMAT} /> : null}</td>

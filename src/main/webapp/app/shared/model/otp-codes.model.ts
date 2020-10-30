@@ -3,7 +3,6 @@ import { IMobileUser } from 'app/shared/model/mobile-user.model';
 
 export interface IOtpCodes {
   id?: number;
-  citizenId?: number;
   otpCode?: string;
   createDate?: string;
   updateDate?: string;

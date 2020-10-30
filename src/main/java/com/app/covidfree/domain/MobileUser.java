@@ -1,12 +1,11 @@
 package com.app.covidfree.domain;
 
-
-import javax.persistence.*;
-
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.*;
 
 /**
  * A MobileUser.

@@ -6,6 +6,10 @@ public class PhoneNumberDto {
     private String phoneNumber;
     private String code;
 
+    public PhoneNumberDto (){
+        
+    }
+
     public PhoneNumberDto(Integer citizenId, String phoneNumber) {
         this.citizenId = citizenId;
         this.phoneNumber = phoneNumber;
