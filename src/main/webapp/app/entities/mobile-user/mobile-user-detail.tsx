@@ -70,7 +70,7 @@ export const MobileUserDetail = (props: IMobileUserDetailProps) => {
               <Translate contentKey="covidFreeBackendApp.mobileUser.status">Status</Translate>
             </span>
           </dt>
-          <dd>{mobileUserEntity.status ? 'true' : 'false'}</dd>
+          <dd>{mobileUserEntity.statusType}</dd>
           <dt>
             <span id="createDate">
               <Translate contentKey="covidFreeBackendApp.mobileUser.createDate">Create Date</Translate>
